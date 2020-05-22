@@ -1,0 +1,54 @@
+using System.Threading.Tasks;
+using ACNHBot.Application.Controllers;
+using DSharpPlus;
+using DSharpPlus.CommandsNext;
+
+namespace ACNHBot.Application
+{
+    public class Bot
+    {
+        private DiscordClient _client;
+        private CommandsNextModule _commandsNextModule;
+        private readonly Config.Config _config;
+
+        public Bot()
+        {
+            _config = new Config.Config();
+        }
+
+        public async Task Start()
+        {
+            _client = new DiscordClient(GetDiscordConfiguration());
+            _commandsNextModule = _client.UseCommandsNext(GetCommandsNextConfiguration());
+
+            _commandsNextModule.RegisterCommands<TestController>();
+
+            await _client.ConnectAsync();
+            await Task.Delay(-1);
+        }
+
+        private DiscordConfiguration GetDiscordConfiguration()
+        {
+            return new DiscordConfiguration
+            {
+                Token = _config.Get().Bot.Token,
+                TokenType = TokenType.Bot,
+                UseInternalLogHandler = true,
+                LogLevel = LogLevel.Debug,
+            };
+        }
+
+        private CommandsNextConfiguration GetCommandsNextConfiguration()
+        {
+            var deps = new DependencyCollectionBuilder()
+                .AddInstance(_client)
+                .Build();
+
+            return new CommandsNextConfiguration
+            {
+                StringPrefix = _config.Get().Bot.CommandPrefix,
+                Dependencies = deps,
+            };
+        }
+    }
+}
