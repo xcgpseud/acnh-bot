@@ -6,7 +6,7 @@ namespace ACNHBot.Application
 {
     public class Executor
     {
-        protected async Task Execute(CommandContext ctx, Func<Task> fn)
+        protected async Task Execute(Func<Task> fn)
         {
             try
             {
