@@ -9,6 +9,7 @@
       <PackageReference Include="DSharpPlus" Version="3.2.3" />
       <PackageReference Include="DSharpPlus.CommandsNext" Version="3.2.3" />
       <PackageReference Include="DSharpPlus.Interactivity" Version="3.2.3" />
+      <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     </ItemGroup>
 
     <ItemGroup>
@@ -16,6 +17,10 @@
       <EmbeddedResource Include="config.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Application\Repositories" />
     </ItemGroup>
 
 </Project>

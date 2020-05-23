@@ -22,6 +22,7 @@ namespace ACNHBot.Application
             _commandsNextModule = _client.UseCommandsNext(GetCommandsNextConfiguration());
 
             _commandsNextModule.RegisterCommands<TestController>();
+            _commandsNextModule.RegisterCommands<ArtController>();
 
             await _client.ConnectAsync();
             await Task.Delay(-1);
