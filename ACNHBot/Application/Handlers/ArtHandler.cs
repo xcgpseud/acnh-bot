@@ -54,5 +54,11 @@ namespace ACNHBot.Application.Handlers
                 embed: embed
             );
         }
+
+        public async Task UpdateArt(CommandContext ctx)
+        {
+            var art = await _service.UpdateArt();
+            await ctx.RespondAsync($"Updated the Art database with {art.Count} entries.");
+        }
     }
 }

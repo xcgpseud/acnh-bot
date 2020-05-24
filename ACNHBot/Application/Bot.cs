@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using ACNHBot.Application.Controllers;
+using ACNHBot.Application.Database.Contexts;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 
@@ -14,6 +15,11 @@ namespace ACNHBot.Application
         public Bot()
         {
             _config = new Config.Config();
+
+            using (var db = new SqliteContext())
+            {
+                db.Database.EnsureCreated();
+            }
         }
 
         public async Task Start()
@@ -23,6 +29,7 @@ namespace ACNHBot.Application
 
             _commandsNextModule.RegisterCommands<TestController>();
             _commandsNextModule.RegisterCommands<ArtController>();
+            _commandsNextModule.RegisterCommands<TurnipController>();
 
             await _client.ConnectAsync();
             await Task.Delay(-1);
