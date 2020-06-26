@@ -2,9 +2,10 @@
   "bot": {
     "command-prefix":  "",
     "superusers": [
-      000123,
+      123123,
       111333
     ],
+    "role-sync-channel": 111222333444,
     "token": "TOKEN HERE"
   }
 }

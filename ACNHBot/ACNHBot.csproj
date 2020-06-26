@@ -29,4 +29,8 @@
       <Folder Include="Application\Repositories" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="bin\Debug\netcoreapp3.1\acnhbot.db" />
+    </ItemGroup>
+
 </Project>
